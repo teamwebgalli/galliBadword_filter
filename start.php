@@ -15,11 +15,11 @@
 elgg_register_event_handler('init', 'system', 'galliBadword_filter_init');
 
 function galliBadword_filter_init() {
-	$views = array('friendlytitle','longtext','text','plaintext');
+	$views = array('output/friendlytitle','output/longtext','output/text','output/plaintext','page/components/list');
 	foreach($views as $view){
-		elgg_register_plugin_hook_handler("view", "output/$view", "galliBadword_filter");
+		elgg_register_plugin_hook_handler("view", $view, "galliBadword_filter");
 	}	
-}	
+}		
 
 function galliBadword_filter($hook, $entity_type, $returnvalue, $params){
 	if ((include elgg_get_plugins_path() . 'galliBadword_filter/lib/badwords.php') == '1') {
