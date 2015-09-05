@@ -11,8 +11,6 @@
  *	Licence : GNU2
  *	Copyright : Team Webgalli 2011-2015
  */
-$english = array(
+return array(
 	'gBwf:addmorewords' => 'Add more badwords as comma seperated. If you have a lot of badwords, please add it directly to /mod/galliBadword_filter/lib/badwords.php',
 );
-
-add_translation("en", $english);

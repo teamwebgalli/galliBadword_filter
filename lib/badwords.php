@@ -12,7 +12,7 @@
  *	Copyright : Team Webgalli 2011-2015
  */
 
-$badwords = array(
+$bad_words = array(
 	/* INSERT NEW BAD WORDS BELOW THIS LINE */
 	
 	/* NO NEED OF EDITTING BELOW */	

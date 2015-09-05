@@ -22,14 +22,16 @@ function galliBadword_filter_init() {
 }		
 
 function galliBadword_filter($hook, $entity_type, $returnvalue, $params){
-	if ((include elgg_get_plugins_path() . 'galliBadword_filter/lib/badwords.php') == '1') {
-		$admin_settings = elgg_get_plugin_setting('badwords', 'galliBadword_filter');
-		$explode = explode(",", $admin_settings);
-		$bad_words = array_merge($badwords, $explode);
-		$replacement = "* * *";
-		for($i=0; $i < sizeof($bad_words); $i++){
-			$returnvalue = preg_replace("/\b$bad_words[$i]\b/i", $replacement, $returnvalue);
-		}	
-	}
-	return $returnvalue;
+    if ((include elgg_get_plugins_path() . 'galliBadword_filter/lib/badwords.php') == '1') {
+        $admin_defined = elgg_get_plugin_setting('badwords', 'galliBadword_filter');
+        if(isset($admin_defined)&& !empty($admin_defined)) {
+            $explode = explode(",", $admin_defined);
+            $bad_words = array_merge($bad_words, $explode);
+        }
+        $replacement = "* * *";
+        for($i=0; $i < sizeof($bad_words); $i++){
+            $returnvalue = preg_replace("/\b$bad_words[$i]\b/iu", $replacement, $returnvalue);
+        }    
+    }
+    return $returnvalue;
 }
