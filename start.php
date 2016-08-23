@@ -24,7 +24,8 @@ function galliBadword_filter_init() {
 function galliBadword_filter($hook, $entity_type, $returnvalue, $params){
     if ((include elgg_get_plugins_path() . 'galliBadword_filter/lib/badwords.php') == '1') {
         $admin_defined = elgg_get_plugin_setting('badwords', 'galliBadword_filter');
-        if(isset($admin_defined)&& !empty($admin_defined)) {
+        $bad_words = $badwords;
+        if(!empty($admin_defined)) {
             $explode = explode(",", $admin_defined);
             $bad_words = array_merge($bad_words, $explode);
         }
